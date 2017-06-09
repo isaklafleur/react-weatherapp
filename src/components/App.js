@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import Navigation from './Navigation';
+import Home from './Home';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <button type="button" className="btn btn-primary">Primary</button>
-      </div>
+      <Router>
+        <div>
+          <Navigation />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route render={() => <p>Not Found</p>} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
